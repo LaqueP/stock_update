@@ -44,4 +44,21 @@ class Combination extends CombinationCore
             'idconecta'             => ['type' => self::TYPE_STRING, 'validate' => 'isGenericName'],
         ],
     ];
+protected $webserviceParameters = [
+    'objectNodeName'   => 'combination',
+    'objectsNodeName'  => 'combinations',
+    'fields'           => [
+        'id_product'  => ['required' => true, 'xlink_resource' => 'products'],
+        // Marcamos idconecta como filtrable y le decimos que su columna en BD también se llama idconecta
+        'idconecta'   => [
+            'filterable' => true,
+            'sqlId'      => 'idconecta',
+        ],
+    ],
+    'associations'     => [
+        'product_option_values' => ['resource' => 'product_option_value'],
+        'images'                => ['resource' => 'image', 'api' => 'images/products'],
+    ],
+];
+
 }

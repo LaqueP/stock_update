@@ -37,19 +37,22 @@ class StockAvailable extends StockAvailableCore
         ],
     ];
 
-    protected $webserviceParameters = [
-        'fields' => [
-            'id_product'           => ['xlink_resource' => 'products'],
-            'id_product_attribute' => ['xlink_resource' => 'combinations'],
-            'id_shop'              => ['xlink_resource' => 'shops'],
-            'id_shop_group'        => ['xlink_resource' => 'shop_groups'],
+protected $webserviceParameters = [
+    'objectNodeName'  => 'stock_available',
+    'objectsNodeName' => 'stock_availables',
+    'fields'          => [
+        'id_product'           => ['xlink_resource' => 'products'],
+        'id_product_attribute' => ['xlink_resource' => 'combinations'],
+        'idconecta'            => [
+            'filterable' => true,
+            'sqlId'      => 'idconecta',
         ],
-        'hidden_fields'   => [],
-        'objectMethods'   => [
-            'add'    => 'addWs',
-            'update' => 'updateWs',
-        ],
-    ];
+    ],
+    'hidden_fields'   => [],
+    'objectMethods'   => [
+        'add'    => 'addWs',
+        'update' => 'updateWs',
+    ],
+];
 
-    // Resto de métodos intactos
 }
